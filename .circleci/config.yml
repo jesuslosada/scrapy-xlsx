@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
+  test-3.7: &test-anchor
     docker:
-      - image: circleci/python:3.7.3
+      - image: circleci/python:3.7
 
     working_directory: ~/scrapy-xlsx
 
@@ -32,3 +32,13 @@ jobs:
           command: |
             . venv/bin/activate
             pytest
+  test-3.6:
+    <<: *test-anchor
+    docker:
+      - image: circleci/python:3.6
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - test-3.7
+    - test-3.6
