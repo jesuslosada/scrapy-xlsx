@@ -5,7 +5,7 @@ with open('README.rst') as f:
 
 setup(
     name='scrapy-xlsx',
-    version='0.1.0',
+    version='0.1.1',
     description='XLSX exporter for Scrapy',
     long_description=readme,
     author='Jesús Losada Novo',
