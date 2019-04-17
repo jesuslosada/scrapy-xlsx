@@ -10,7 +10,7 @@ Usage
 
 Install the library using `pip`_::
 
-    $ pip install scrapy_xlsx
+    $ pip install scrapy-xlsx
 
 Configure the exporter in your Scrapy project ``settings.py`` file::
 
