@@ -1,2 +1,4 @@
 scrapy==1.6.0
 openpyxl==2.6.2
+tox==3.8.6
+pytest==4.4.1
