@@ -14,7 +14,7 @@ setup(
     license='MIT',
     packages=['scrapy_xlsx'],
     install_requires=['scrapy', 'openpyxl'],
-    tests_require=['tox', 'pytest'],
+    extras_require={'testing': ['pytest', 'tox']},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -23,7 +23,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Topic :: Software Development :: Libraries'
+        'Topic :: Software Development :: Libraries',
     ],
     keywords='scrapy xlsx exporter',
 )
