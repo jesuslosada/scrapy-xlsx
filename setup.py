@@ -25,5 +25,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries'
     ],
-    keywords=['scrapy', 'xlsx', 'exporter']
+    keywords='scrapy xlsx exporter',
 )
