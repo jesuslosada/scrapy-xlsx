@@ -1,44 +1,33 @@
 version: 2
 jobs:
-  test-3.7: &test-anchor
+  test-py37: &test-anchor
     docker:
       - image: circleci/python:3.7
-
+        environment:
+          TOXENV: py37
     working_directory: ~/scrapy-xlsx
-
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
+            pip install tox
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest
-  test-3.6:
+            tox
+  test-py36:
     <<: *test-anchor
     docker:
       - image: circleci/python:3.6
+        environment:
+          TOXENV: py36
 workflows:
   version: 2
   workflow:
     jobs:
-    - test-3.7
-    - test-3.6
+    - test-py37
+    - test-py36
