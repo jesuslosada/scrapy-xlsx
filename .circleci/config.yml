@@ -27,7 +27,16 @@ jobs:
           TOXENV: py36
 workflows:
   version: 2
-  workflow:
-    jobs:
-    - test-py37
-    - test-py36
+  test:
+    jobs: &test-jobs
+      - test-py37
+      - test-py36
+  periodic:
+    triggers:
+      - schedule:
+          cron: "0 8 * * 6"
+          filters:
+            branches:
+              only:
+                - master
+    jobs: *test-jobs
