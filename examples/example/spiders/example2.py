@@ -1,5 +1,5 @@
 """
-Simple spider to demonstrate the XLSX exporter.
+Simple spider to demonstrate how to use the XLSX exporter.
 
 This spider produces the following output:
 
