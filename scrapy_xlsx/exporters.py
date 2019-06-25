@@ -6,8 +6,14 @@ from scrapy.exporters import BaseItemExporter
 class XlsxItemExporter(BaseItemExporter):
     """XlsxItemExporter allows exporting the output items to a XLSX file."""
 
-    def __init__(self, file, include_header_row=True, join_multivalued=',',
-                 default_value=None, **kwargs):
+    def __init__(
+        self,
+        file,
+        include_header_row=True,
+        join_multivalued=",",
+        default_value=None,
+        **kwargs
+    ):
         self._configure(kwargs, dont_fail=True)
 
         self.file = file
@@ -20,7 +26,7 @@ class XlsxItemExporter(BaseItemExporter):
         self.sheet = self.workbook.create_sheet()
 
     def serialize_field(self, field, name, value):
-        serializer = field.get('serializer', self._default_serializer)
+        serializer = field.get("serializer", self._default_serializer)
         return serializer(value)
 
     def _default_serializer(self, value):
@@ -43,8 +49,7 @@ class XlsxItemExporter(BaseItemExporter):
             return value
 
         # Convert lists and tuples of strings into a single string.
-        if self._join_multivalued is not None and \
-                isinstance(value, (list, tuple)):
+        if self._join_multivalued is not None and isinstance(value, (list, tuple)):
             try:
                 return self._join_multivalued.join(value)
             except TypeError:
@@ -58,9 +63,9 @@ class XlsxItemExporter(BaseItemExporter):
             self._headers_not_written = False
             self._write_headers_and_set_fields_to_export(item)
 
-        fields = self._get_serialized_fields(item,
-                                             default_value=self.default_value,
-                                             include_empty=True)
+        fields = self._get_serialized_fields(
+            item, default_value=self.default_value, include_empty=True
+        )
         values = list(value for _, value in fields)
         self.sheet.append(values)
 
