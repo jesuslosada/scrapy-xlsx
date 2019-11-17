@@ -26,6 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox
     - name: Run tests
+      env:
+        TOXENV: py
       run: |
-        export TOXENV="py$(echo ${{ matrix.python-version }} | cut -d '.' -f 1)$(echo ${{ matrix.python-version }} | cut -d '.' -f 2)"
         tox
