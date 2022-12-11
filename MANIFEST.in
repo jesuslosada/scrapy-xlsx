@@ -1,6 +1,5 @@
 include README.rst
 include CHANGES.rst
 include LICENSE.txt
-include requirements.txt
 recursive-include tests *.py
 recursive-include examples *.py *.rst *.cfg
